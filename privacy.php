@@ -2,19 +2,7 @@
 <html>
 	<head>
 		<title>Epiphanee.org | Eureka!</title>
-		<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
-		<link rel="manifest" href="icons/manifest.json">
-		<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#333333">
-		<link rel="shortcut icon" href="icons/favicon.ico">
-		<meta name="msapplication-config" content="icons/browserconfig.xml">
-		<meta name="theme-color" content="#ffffff">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<script src='https://www.google.com/recaptcha/api.js'></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<?php require_once "content/headIncludes.php" ?>
 		<script src="/main.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
@@ -46,7 +34,7 @@
 				<h4 class="greenbox">4.	Using personal information</h4>
 				<p>
 					4.1	Personal information submitted to us through our website will be used for the purposes specified in this policy or on the relevant pages of the website.
-					4.2	We may use your personal information to: 
+					4.2	We may use your personal information to:
 					<p class="privSublist">
 						(a)	administer our website and business;<br>
 						(b)	personalize our website for you;<br>
@@ -65,7 +53,7 @@
 				<p>
 					5.1	We may disclose your personal information to any of our employees insofar as reasonably necessary for the purposes set out in this policy.<br>
 					5.2	We may disclose your personal information to any member of our group of companies (this means our subsidiaries, our ultimate holding company and all its subsidiaries) insofar as reasonably necessary for the purposes set out in this policy.<br>
-					5.3	We may disclose your personal information: 
+					5.3	We may disclose your personal information:
 					<p class="privSublist">
 						(a)	to the extent that we are required to do so by law;<br>
 						(b)	in connection with any ongoing or prospective legal proceedings;<br>
@@ -85,7 +73,7 @@
 				<p>
 					7.1	This Section 7 sets out our data retention policies and procedure, which are designed to help ensure that we comply with our legal obligations in relation to the retention and deletion of personal information.<br>
 					7.2	Personal information that we process for any purpose or purposes shall not be kept for longer than is necessary for that purpose or those purposes.<br>
-					7.3	Notwithstanding the other provisions of this Section 7, we will retain documents (including electronic documents) containing personal data: 
+					7.3	Notwithstanding the other provisions of this Section 7, we will retain documents (including electronic documents) containing personal data:
 					<p class="privSublist">
 						(a)	to the extent that we are required to do so by law;<br>
 						(b)	if we believe that the documents may be relevant to any ongoing or prospective legal proceedings; and<br>
@@ -106,7 +94,7 @@
 				</p>
 				<h4 class="greenbox">10. Your rights</h4>
 				<p>
-					10.1	You may instruct us to provide you with any personal information we hold about you; provision of such information will be subject to: 
+					10.1	You may instruct us to provide you with any personal information we hold about you; provision of such information will be subject to:
 					<p class="privSublist">
 						(a)	the payment of a fee (currently fixed at CAD 5.00) to be spent exclusively on potato chips for Philip Scott; and<br>
 						(b)	the supply of appropriate evidence of your identity (for this purpose, we will usually ask you to supply us with your remote IP address).
@@ -142,7 +130,7 @@
 					12.8	Blocking all cookies will have a negative impact upon the usability of many websites.<br>
 					12.9	If you block cookies, you will not be able to use all the features on our website.<br>
 					12.10	You can delete cookies already stored on your computer; for example:
-					<p class="privSublist">	
+					<p class="privSublist">
 						(a)	in Internet Explorer (version 11), you must manually delete cookie files (you can find instructions for doing so at http://windows.microsoft.com/en-gb/internet-explorer/delete-manage-cookies#ie=ie-11);<br>
 						(b)	in Firefox (version 44), you can delete cookies by clicking "Tools", "Options" and "Privacy", then selecting "Use custom settings for history" from the drop-down menu, clicking "Show Cookies", and then clicking "Remove All Cookies"; and<br>
 						(c)	in Chrome (version 48), you can delete all cookies by accessing the "Customise and control" menu, and clicking "Settings", "Show advanced settings" and "Clear browsing data", and then selecting "Cookies and other site and plug-in data" before clicking "Clear browsing data".
@@ -157,8 +145,8 @@
 						(a)	by email, using the email address in the “About Us” section.
 					</p>
 				</p>
-			</section>	
+			</section>
 		</main>
-		<?php require_once "footer.php" ?>
+		<?php require_once "content/footer.php" ?>
 	</body>
 </html>

@@ -1,28 +1,17 @@
 <?php
-	if (isset($_GET["activated"]) && $_GET["activated"] === false) {
-		header("Location: /activate_p.php");
-		die();
-	} else {
-		require_once "db_conn.php";
-		require_once "check_isActivated.php";
-		
-		if ( !checkActivation($conn) ) {
-			header("Location: /activate_p.php");
-			die();
-		}
-	}
-	
+	require_once "db_conn.php";
 	require_once "check_isBanned.php";
+	
 	$ip = $_SERVER["REMOTE_ADDR"];
 
 	if ( isBanned($conn, $ip) ) {
 		header("Location: /banned.html");
 		die();
 	}
-	
+
 	$title =  trim($_REQUEST["title"]);
 	$cont = trim($_REQUEST["cont"]);
-	
+
 	if ( !($title || $cont) ) {
 		echo "<h4 class='title'>Hello! Your submission didn't go through because:</h4>
 			  <ul>
@@ -35,25 +24,25 @@
 		header('Refresh: 15;url=/');
 		die();
 	}
-	
+
 	$badWords = array("fuck", "shit", "asshole", "cunt", "fag", "fgt", "fuk", "fck", "fcuk", "assfuck", "assfucker", "fucker", "ass", "jizz", "fukking", "fcking", "fcuking", "shet",
 					"motherfucker", "ass", "asscock", "asshead", "asslicker", "asslick", "assnigger", "nigger", "asssucker", "bastard", "betch", "bitchtits", "fuking",
 					"bitches", "bitch", "brotherfucker", "bullshit", "bumblefuck", "buttfucka", "fucka", "buttfucker", "buttfucka", "cum", "cumming", "cumshot", "shitty", "shity", "fucking",
-					"fagbag", "fagfucker", "faggit", "faggot", "faggotcock", "fagtard", "fatass", "fuckoff", "fuckstick", "fucktard", "fuckwad", "fuckwit", "fagit", "faget", "fagget", "dick", 
-					"dickfuck", "dickhead", "dickjuice", "dickmilk", "dik", "doochbag", "douchebag", "douche", "dickweed", "dyke", "dumbass", "dumass", 
-					"fuckboy", "fuckbag", "gayass", "gayfuck", "gaylord", "gaytard", "nigga", "niggers", "niglet", "paki", "piss", "prick", "pussy", 
-					"poontang", "poonany", "porchmonkey", "porch monkey", "poon", "queer", "queerbait", "queerhole", "queef", "renob", "rimjob", "ruski", 
-					"sandnigger", "sand nigger", "schlong", "shitass", "shitbag", "shitbagger", "shitbreath", "chinc", "carpetmuncher", "chink", "choad", "clitface", 
-					"clusterfuck", "cockass", "cockbite", "cockface", "skank", "skeet", "skullfuck", "slut", "slutbag", "sloot", "splooge", "twatlips", "twat", 
+					"fagbag", "fagfucker", "faggit", "faggot", "faggotcock", "fagtard", "fatass", "fuckoff", "fuckstick", "fucktard", "fuckwad", "fuckwit", "fagit", "faget", "fagget", "dick",
+					"dickfuck", "dickhead", "dickjuice", "dickmilk", "dik", "doochbag", "douchebag", "douche", "dickweed", "dyke", "dumbass", "dumass",
+					"fuckboy", "fuckbag", "gayass", "gayfuck", "gaylord", "gaytard", "nigga", "niggers", "niglet", "paki", "piss", "prick", "pussy",
+					"poontang", "poonany", "porchmonkey", "porch monkey", "poon", "queer", "queerbait", "queerhole", "queef", "renob", "rimjob", "ruski",
+					"sandnigger", "sand nigger", "schlong", "shitass", "shitbag", "shitbagger", "shitbreath", "chinc", "carpetmuncher", "chink", "choad", "clitface",
+					"clusterfuck", "cockass", "cockbite", "cockface", "skank", "skeet", "skullfuck", "slut", "slutbag", "sloot", "splooge", "twatlips", "twat",
 					"twats", "twatwaffle", "vaj", "vajayjay", "va-j-j", "wank", "wankjob", "wetback", "whore", "whorebag", "whoreface");
-	
+
 	$title = " " . $title . " ";	//adds a space at the front for profanity filter
 	$cont = " " . $cont . " ";
-	
+
 	for ($i = 0; $i < count($badWords); $i++) {
 		$badWords[$i] = " " . $badWords[$i] . " ";		//Adds spaces on the sides of the array terms to ensure that it doesn't filter something like "sass"
 		if ( stristr($title, $badWords[$i]) || stristr($cont, $badWords[$i]) ) {
-			
+
 			require_once("ban_user.php");
 			$level = banUser($conn, $ip);
 			if ($level < 3) {
@@ -69,14 +58,14 @@
 			}
 		}
 	}
-	
+
 	$title = substr($title, 1, -1);
 	$cont = substr($cont, 1, -1);
-	
+
 	$title = $conn->real_escape_string($title);
 	$cont = $conn->real_escape_string($cont);
 	$ip = $conn->real_escape_string($ip);
-	
+
 	$sql = "INSERT INTO ideadata (
 				title,
 				cont,
@@ -86,7 +75,7 @@
 				'" . $cont . "',
 				'" . $ip . "'
 			)";
-	
+
 	if ( $conn->query($sql) ) {
 		header("Location: /#posts");
 		die();

@@ -2,20 +2,8 @@
 <html>
 	<head>
 		<title>Epiphanee.org | Eureka!</title>
-		<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
-		<link rel="manifest" href="icons/manifest.json">
-		<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#333333">
-		<link rel="shortcut icon" href="icons/favicon.ico">
-		<meta name="msapplication-config" content="icons/browserconfig.xml">
-		<meta name="theme-color" content="#ffffff">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<script src='https://www.google.com/recaptcha/api.js'></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<script src="/main.js"></script>
+		<?php require_once "content/headIncludes.php" ?>
+		<script src="main.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
@@ -39,6 +27,6 @@
 				</div>
 			</header>
 		</main>
-		<?php require_once "footer.php" ?>
+		<?php require_once "content/footer.php" ?>
 	</body>
 </html>

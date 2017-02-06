@@ -1,5 +1,6 @@
 body {
 	background-color: #272822;
+	scroll-behavior: smooth;
 }
 a, a:active, a:visited {
 	color: #74E22E;
@@ -119,7 +120,7 @@ article p {
 }
 .content {
 	display: none;
-	
+
 }
 button.btn-pink {
 	border: 0;

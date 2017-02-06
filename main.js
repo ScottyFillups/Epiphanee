@@ -9,7 +9,7 @@ $(document).ready(function() {
 			$(".recaptcha").css("transform", "scale(1)");
 			$(".recaptcha").css("margin", "10px auto");
 		}
-		
+
 		if (windowWidth < 570) {
 			$("footer").css("text-align", "center");
 			$("footer a").css("display", "block");
@@ -22,20 +22,20 @@ $(document).ready(function() {
 		var file;
 		var glyph;
 		var get = window.location.href;
-		
+
 		if (get.indexOf("?") === -1) {
 			get = "";
 		} else {
 			get = get.slice( get.indexOf("?") );
 		}
-		
+
 		switch(type) {
 			case "likes":
-				file = "/php/inc_likes.php" + get;
+				file = "backend/inc_likes.php" + get;
 				glyph = "glyphicon-thumbs-up";
 				break;
 			case "dislikes":
-				file = "/php/inc_dislikes.php" + get;
+				file = "backend/inc_dislikes.php" + get;
 				glyph = "glyphicon-thumbs-down";
 				break;
 			default:
@@ -44,22 +44,19 @@ $(document).ready(function() {
 		}
 		console.log(file);
 		$.post(file,
-		{
-			id: elem.closest("article").attr('id')	//possible security issue: since this script looks at the id of the article, user can change the id via browser settings...
-		},
-		function(data, status) {
-			if (data === "activate_d.php" || data === "activate_l.php") {
-				window.location.href = data;
-			} else {
-				var string = "<span class='glyphicon " + glyph + "'></span>&nbsp;" +
-							 "<span class='badge'>" + data + "</span>";
-				elem.html(string);
+			{
+				id: elem.closest("article").attr('id')	//possible security issue: since this script looks at the id of the article, user can change the id via browser settings...
+			},
+			function(data, status) {
+					var string = "<span class='glyphicon " + glyph + "'></span>&nbsp;" +
+								 "<span class='badge'>" + data + "</span>";
+					elem.html(string);
 			}
-		});
-	}	
+		);
+	}
 	function rearrange(type) {
 		var file;
-		$.post("/php/disp_idea.php", 
+		$.post("backend/disp_idea.php",
 		{
 			sortType: type,
 		},
@@ -68,9 +65,9 @@ $(document).ready(function() {
 			$("#posts").animate({opacity:1}, "slow");
 		});
 	}
-	
+
 	resize();
-	
+
 	$("#posts").on("click", "article", function() {
 		$(this).children("div.content").slideToggle("slow");
 	});
@@ -79,9 +76,9 @@ $(document).ready(function() {
 		e.stopPropagation();
 		e.preventDefault();
 	});
-	
-	
-	
+
+
+
 	$("#posts").on("click", ".likes", function() {
 		updateLabel($(this), "likes");
 	});
@@ -89,9 +86,9 @@ $(document).ready(function() {
 		updateLabel($(this), "dislikes");
 	});
 	$("#posts").on("click", ".report", function() {
-		
+
 	});
-	
+
 
 	$(".sortRecent").on("click", function() {
 		$(this).addClass("active");
@@ -120,11 +117,7 @@ $(document).ready(function() {
 			$('#modalCaptcha').modal('show');
 		}
 	});
-	
-	$("#decline").on("click", function() {
-		window.location.href = "index.php?activated=false";		//local
-	});
-	
+
 	$(window).resize(function() {
 		resize();
 	});

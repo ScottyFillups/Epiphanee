@@ -1,11 +1,12 @@
 <?php
+	//updates the user's ban count and returns current ban count
 	function banUser($conn, $ip) {
 		$checkQr = "SELECT level FROM banlist
 					WHERE ip='" . $ip . "'";
-		
+
 		if ( $result = $conn->query($checkQr) ) {
 			if ( $row = $result->fetch_assoc() ) {
-				$updateQr = "UPDATE banlist 
+				$updateQr = "UPDATE banlist
 							SET level = level + 1
 							WHERE ip = '" . $ip . "'";
 				//the query does not take into affect when the return statement is called, hence the +1

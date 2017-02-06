@@ -1,39 +1,19 @@
-<?php
-	if (isset($_GET["activated"]) && $_GET["activated"] === false) {
-		$status = "?activated=false";
-	} else {
-		$status = "";
-	}
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Epiphanee.org | Eureka!</title>
-		<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16">
-		<link rel="manifest" href="icons/manifest.json">
-		<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#333333">
-		<link rel="shortcut icon" href="icons/favicon.ico">
-		<meta name="msapplication-config" content="icons/browserconfig.xml">
-		<meta name="theme-color" content="#ffffff">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<script src='https://www.google.com/recaptcha/api.js'></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<script src="/main.js"></script>
+		<?php require_once "content/headIncludes.php" ?>
+		<script src="main.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
 		<main class="container">
 			<header id="top" class="botSpacing">
-				<img class="img-responsive" src="logo.png">
+				<img class="img-responsive" src="epiph_icons/logo.png">
 				<h1 class="green">Epiphanee</h1>
 				<h2 class="greenbox">Everything starts with an idea</h2>
 				<p>
-					Throughout the course of your life, you will eventually have a "Eureka!" moment. 
+					Throughout the course of your life, you will eventually have a "Eureka!" moment.
 					Alas, most of the time these brilliant ideas are cast aside because you may not have the skill or the time required to pursue it.
 					Our goal is to not let these ideas go to waste: <i>imagine a place where one can go to seek or share innovative ideas without constraint.</i>
 				</p>
@@ -45,11 +25,11 @@
 					our <a href="summary.php">Policy Summary</a> for a brief explanation of what you're agreeing to.
 				</b></h5>
 			</header>
-			<form action="submit.php<?php echo $status ?>" method="post">
+			<form action="submit.php" method="post">
 				<input type="text" name="title" maxlength="80" placeholder="Enter a name for your idea" required><br>
 				<textarea name="cont" maxlength="65535" placeholder="Provide a thorough explanation of your idea" required></textarea><br>
 				<div class="recaptcha">
-					<!--<div class="g-recaptcha" data-sitekey="6LftFiQTAAAAAI4UlxtMBhrr2bXdox0JkjadRhPN"></div>-->
+					<!-- <div class="g-recaptcha" data-sitekey="6LftFiQTAAAAAI4UlxtMBhrr2bXdox0JkjadRhPN"></div> -->
 					<div class="g-recaptcha" data-sitekey="6LdizyMTAAAAABizu4cI62AIk7X5OGvpOai4mjJT"></div>
 				</div>
 				<input id="submitIdea" name="submitIdea" type="submit" value="Submit">
@@ -91,10 +71,9 @@
 				</div>
 			</section>
 			<section id="posts">
-				<?php require_once "/home/epiph/public_html/php/disp_idea.php" ?>
-				<!--php require_once "/php/disp_idea_recent.php" local-->
+				<?php require_once "backend/disp_idea_recent.php" ?>
 			</section>
 		</main>
-		<?php require_once "footer.php" ?>
+		<?php require_once "content/footer.php" ?>
 	</body>
 </html>
